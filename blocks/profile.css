@@ -8,9 +8,7 @@
 .profile__column {
   display: flex;
   flex-direction: column;
-
-  height: 190px;
-  width: 420px;
+  margin: 0;
 }
 
 .profile__avatar {
@@ -25,6 +23,12 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 100%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
 }
 .profile__description {
   margin: 0;
@@ -32,6 +36,13 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
+  max-height: 96px;
 }
 
 .profile__edit-btn {
@@ -40,16 +51,18 @@
   height: 16px;
   display: flex;
   border: none;
-
-  opacity: 0.7;
   font-family: "Poppins";
   font-weight: 500;
   font-size: 16px;
-  line-height: 100%;
   background-color: #fcf5e5;
   color: #212121;
   padding: 0;
   gap: 8px;
+  opacity: 70%;
+}
+.profile__edit-btn:hover {
+  opacity: 100%;
+  cursor: pointer;
 }
 
 .profile__add-btn {
@@ -69,4 +82,60 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+.profile__add-btn:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+@media screen and (max-width: 630px) {
+  .profile {
+    flex-direction: column;
+    max-width: 288px;
+    align-items: center;
+    text-align: center;
+  }
+  .profile__column {
+    margin: 0;
+    padding: 0;
+  }
+  .profile__avatar {
+    margin: 0 0 12px;
+    height: 80px;
+    width: 80px;
+  }
+  .profile__edit-btn {
+    align-self: center;
+    gap: 8px;
+    margin: 0 0 20px;
+    opacity: 0.7;
+    border-radius: 90px;
+    padding: 0;
+  }
+
+  .profile__add-btn {
+    width: 288px;
+    height: 52px;
+    border-radius: 8px;
+    margin: 0 0 20px;
+  }
+
+  .profile__name {
+    margin: 0 0 6px;
+    max-width: 288px;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: rgba(33, 33, 33, 1);
+  }
+  .profile__description {
+    margin: 0 0 32px;
+    max-width: 288px;
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(33, 33, 33, 0.7);
+  }
 }
