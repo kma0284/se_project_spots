@@ -2,13 +2,14 @@
   display: flex;
   align-content: center;
   margin: auto;
-  padding: 34px 0 20px;
+  padding: 34px 0 0px;
   border-bottom: 1px solid rgba(33, 33, 33, 0.4);
 }
 .profile__column {
   display: flex;
   flex-direction: column;
   margin: 0;
+  padding: 0;
 }
 
 .profile__avatar {
@@ -31,7 +32,7 @@
   max-width: 420px;
 }
 .profile__description {
-  margin: 0;
+  margin: 0 0 18px;
   font-family: "Poppins";
   font-weight: 500;
   font-size: 16px;
@@ -46,7 +47,7 @@
 }
 
 .profile__edit-btn {
-  margin-top: auto;
+  margin: 0 0 20px;
   width: 108px;
   height: 16px;
   display: flex;
@@ -69,8 +70,7 @@
   display: flex;
   width: 149px;
   height: 52px;
-  margin-left: auto;
-  margin-top: auto;
+  margin: auto 0 20px auto;
   background: #212121;
   color: #fcf5e5;
   opacity: 1;
@@ -90,7 +90,7 @@
 @media screen and (max-width: 630px) {
   .profile {
     flex-direction: column;
-    max-width: 288px;
+    max-width: 280px;
     align-items: center;
     text-align: center;
   }

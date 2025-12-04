@@ -5,6 +5,7 @@
   object-fit: cover;
   display: block;
 }
+
 .card__content {
   margin: 0;
   display: flex;
