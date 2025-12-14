@@ -114,10 +114,43 @@
             </li>
           </ul>
         </section>
-        <footer class="footer">
-          <p class="footer__copyright">2025 &copy; Spots</p>
-        </footer>
       </main>
+      <footer class="footer">
+        <p class="footer__copyright">2025 &copy; Spots</p>
+      </footer>
+      <div class="modal modal_is-opened">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn">
+            <img
+              src="./images/spots-images/close.svg"
+              alt="close button"
+              class="modal_close-btn"
+            />
+          </button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form class="modal__form">
+            <label for="profile-name-input" class="modal__label"
+              >Name
+              <input
+                id="profile-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your name"
+              />
+            </label>
+            <label for="profile-name-description" class="modal__label">
+              Description
+              <input
+                id="profile-name-description"
+                type="text"
+                class="modal__input"
+                placeholder="Describe yourself"
+              />
+            </label>
+            <button type="submit" class="modal__save-btn">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

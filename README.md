@@ -7,6 +7,7 @@
 - Images
 - grid display
 - media query
+- modals added to html
 
 **Intro**
 
@@ -23,3 +24,5 @@ The way you'll do this at work is by exporting images directly from Figma — we
 Good luck and have fun!
 https://drive.google.com/file/d/1LgDWjxuuCblJu969sJFFJ1c4gRQ2wwUO/view?usp=drive_link
 Check this out! What my project is about, how I did it and the challenges I faced.
+
+https://kma0284.github.io/se_project_spots/
