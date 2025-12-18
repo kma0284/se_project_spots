@@ -131,6 +131,7 @@
   .profile__description {
     padding: 0 0 32px;
     width: 100%;
+    max-width: 630px;
     font-family: Poppins;
     font-weight: 500;
     font-size: 16px;

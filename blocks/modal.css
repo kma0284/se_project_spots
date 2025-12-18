@@ -6,20 +6,32 @@
   right: 0;
   bottom: 0;
   left: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.modal_is-opened {
+.modal__is-opened {
   visibility: visible;
 }
 .modal__container {
-  padding: 32px 50px;
-  position: relative;
-  background-color: #fff;
   max-width: 730px;
   width: 100%;
-  border-radius: 6px;
+  background-color: #fff;
+  position: relative;
+  border-radius: 8px;
+  padding: 32px 50px;
+}
+
+.modal__close-btn {
+  border: none;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  align-self: center;
+  position: absolute;
+  top: 32px;
+  right: 50px;
 }
 .modal__form {
   display: flex;
@@ -29,70 +41,78 @@
   margin: 0 0 32px;
   font-family: Poppins;
   font-weight: 500;
-  font-style: Medium;
   font-size: 32px;
+  color: #212121;
 }
+
 .modal__label {
-  display: flex;
-  flex-direction: column;
-  width: 630;
-  height: 52;
-  gap: 8px;
-  margin-bottom: 32px;
+  margin: 0 0 32px;
   font-family: Poppins;
   font-weight: 500;
   font-size: 16px;
-  line-height: 110.00000000000001%;
+
   color: #212121b2;
-  margin-bottom: 32px;
-}
-.modal__close-btn {
-  position: absolute;
-  top: 32px;
-  right: 50px;
-  border: none;
-  width: 40px;
-  height: 40px;
-  opacity: 40%;
 }
 .modal__input {
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 20px;
-  color: #2121214d;
+  display: block;
+  margin: 8px 0 0;
+  border: 1px solid #21212166;
+
   padding: 16px 12px;
   border-radius: 8px;
+  border-width: 1px;
+  max-width: none;
+  width: 100%;
+}
+.modal__input::placeholder {
+  color: #2121214d;
 }
 .modal__save-btn {
-  width: 156px;
+  max-width: 156px;
   height: 52px;
-  opacity: 1;
-  border-radius: 8px;
   padding: 18px 32px;
-
-  gap: 8px;
-  background-color: #212121;
-  color: #fff;
+  background: #212121;
+  color: #fcf5e5;
+  border-radius: 8px;
   font-family: Poppins;
   font-weight: 500;
   font-size: 16px;
 }
 @media screen and (max-width: 630px) {
+  .modal {
+    max-width: 630px;
+  }
   .modal__container {
-    padding: 12px;
-    margin: 0 10px;
+    margin: 10px;
+    padding: 10px;
   }
-  .modal__form {
-  }
-
   .modal__save-btn {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 24px 0 0;
+    max-width: none;
     width: 100%;
   }
   .modal__title {
     font-family: Poppins;
     font-weight: 500;
     font-size: 20px;
-    margin-top: 22px;
+    margin: 12px 0 0;
+  }
+  .modal__label {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110.00000000000001%;
+    margin: 24px 0 0;
+  }
+  .modal__input {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 16px;
+
+    width: 92%;
   }
   .modal__close-btn {
     top: 12px;
