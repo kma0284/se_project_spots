@@ -6,27 +6,28 @@
   right: 0;
   bottom: 0;
   left: 0;
-
+  transition: visibility 0.3s linear, opacity 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 1s linear ease-in-out;
 }
-.modal__is-opened {
+.modal_is-opened {
   visibility: visible;
-  transition: 1s linear ease-in-out;
 }
 .modal__container {
   max-width: 730px;
-  width: 100%;
+
   background-color: #fff;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
   border-radius: 8px;
   padding: 32px 50px;
 }
 
 .modal__close-btn {
   border: none;
+  padding: 0;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -34,14 +35,19 @@
   position: absolute;
   top: 32px;
   right: 50px;
+  cursor: pointer;
 }
+.modal__close-btn:hover {
+  opacity: 40%;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
 }
 .modal__title {
   margin: 0 0 32px;
-  font-family: Poppins;
+  font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 32px;
   color: #212121;
@@ -49,7 +55,7 @@
 
 .modal__label {
   margin: 0 0 32px;
-  font-family: Poppins;
+  font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
 
@@ -57,6 +63,7 @@
 }
 .modal__input {
   display: block;
+  box-sizing: border-box;
   margin: 8px 0 0;
   border: 1px solid #21212166;
 
@@ -76,9 +83,14 @@
   background-color: #212121;
   color: #fcf5e5;
   border-radius: 8px;
-  font-family: Poppins;
+  font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.modal__save-btn:hover {
+  opacity: 40%;
 }
 @media screen and (max-width: 630px) {
   .modal {
@@ -89,33 +101,18 @@
     padding: 10px;
   }
   .modal__save-btn {
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 16px;
     margin: 24px 0 0;
     max-width: none;
     width: 100%;
   }
   .modal__title {
-    font-family: Poppins;
-    font-weight: 500;
     font-size: 20px;
     margin: 12px 0 0;
   }
   .modal__label {
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 110.00000000000001%;
     margin: 24px 0 0;
   }
-  .modal__input {
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 16px;
 
-    width: 92%;
-  }
   .modal__close-btn {
     top: 12px;
     right: 12px;
