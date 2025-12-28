@@ -1,7 +1,7 @@
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const profileCloseBtn = editProfileModal.querySelector("#profile__close-btn");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
+const profileForm = document.forms["profile-form"];
 const profileSaveBtn = editProfileModal.querySelector("#profile_save-btn");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
@@ -9,14 +9,13 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
-
+const modalCloseBtn = document.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostBtn = document.querySelector("#profile-add-btn");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
-
 const profileImageInput = newPostModal.querySelector("#profile-image-input");
 const profileCaptionInput = newPostModal.querySelector(
   "#profile-caption-input"
@@ -37,7 +36,7 @@ editProfileBtn.addEventListener("click", function () {
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 });
 
-profileCloseBtn.addEventListener("click", function () {
+modalCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 newPostBtn.addEventListener("click", function () {

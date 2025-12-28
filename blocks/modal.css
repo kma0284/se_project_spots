@@ -6,13 +6,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  transition: visibility 0.3s linear, opacity 0.3s ease-in-out;
+  transition: visibility 0.3s linear, opacity 0.3s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .modal_is-opened {
   visibility: visible;
+  transition: visibility 0.3s linear, opacity 0.3s ease-out;
 }
 .modal__container {
   max-width: 730px;
