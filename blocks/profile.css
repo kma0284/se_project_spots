@@ -82,6 +82,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  border: none;
 }
 .profile__add-btn:hover {
   opacity: 70%;

@@ -10,10 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 .modal_is-opened {
   visibility: visible;
-  transition: visibility 0.3s linear, opacity 0.3s ease-out;
+  opacity: 1;
 }
 .modal__container {
   max-width: 730px;
@@ -88,6 +89,7 @@
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
+  border: none;
 }
 
 .modal__save-btn:hover {
