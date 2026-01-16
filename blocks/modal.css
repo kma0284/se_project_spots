@@ -93,15 +93,65 @@
 }
 
 .modal__save-btn:hover {
-  opacity: 40%;
+  opacity: 0.4;
 }
-@media screen and (max-width: 630px) {
+.modal__image-container {
+  position: relative;
+  flex-direction: column;
+  border-radius: 8px;
+  margin: 0;
+}
+.modal__close-btn_type_preview {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: -52.5px;
+  opacity: 1;
+  cursor: pointer;
+  border: none;
+}
+
+.modal__close-btn_type_preview:hover {
+  opacity: 0.4;
+}
+.modal__caption {
+  color: white;
+  background-color: #212121;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  padding: 4px 8px;
+  margin: 8px 0;
+  border-radius: 8px;
+  flex-shrink: 1;
+  width: fit-content;
+}
+.modal__image {
+  position: relative;
+  z-index: -1;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  list-style-type: none;
+  background-color: #00000080;
+  border-radius: 8px;
+}
+.modal__image-container {
+  padding: 16px;
+}
+
+@media screen and (max-width: 480px) {
   .modal {
     max-width: 630px;
   }
   .modal__container {
     margin: 10px;
     padding: 10px;
+    background-color: #000000;
   }
   .modal__save-btn {
     margin: 24px 0 0;
@@ -111,13 +161,43 @@
   .modal__title {
     font-size: 20px;
     margin: 12px 0 0;
+    border-radius: 8px;
   }
-  .modal__label {
-    margin: 24px 0 0;
+  .modal__image-container {
+    margin: 0;
+  }
+  .modal__caption {
+    margin: 8px 0 0;
+    border-radius: 8px;
   }
 
   .modal__close-btn {
     top: 12px;
     right: 12px;
+  }
+  .modal__image {
+    max-width: unset;
+    min-width: 288px;
+    margin: 0;
+  }
+
+  .modal__caption {
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+  }
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right: 0;
+  }
+}
+@media screen and (max-width: 627px) {
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right: 0;
+  }
+  .modal__image {
+    max-width: unset;
   }
 }
