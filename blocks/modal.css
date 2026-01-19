@@ -6,7 +6,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  transition: visibility 0.3s linear, opacity 0.3s ease-in;
+  transition:
+    visibility 0.3s linear,
+    opacity 0.3s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +148,6 @@
   .modal__container {
     margin: 10px;
     padding: 10px;
-    background-color: #000000;
   }
   .modal__save-btn {
     margin: 24px 0 0;
@@ -155,7 +156,7 @@
   }
   .modal__title {
     font-size: 20px;
-    margin: 12px 0 0;
+    margin: 12px 0;
     border-radius: 8px;
   }
   .modal__image-container {
