@@ -46,16 +46,32 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostBtn = document.querySelector("#profile-add-btn");
 const imageInput = newPostModal.querySelector("#profile-image-input");
-const CaptionInput = newPostModal.querySelector("#profile-caption-input");
+const captionInput = newPostModal.querySelector("#profile-caption-input");
 const addCardForm = document.querySelector("#add_card_form");
-
+//const openModal = (modal) => {
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal.modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+document.addEventListener("mousedown", (evt) => {
+  const openedModal = document.querySelector(".modal.modal_is-opened");
+  if (openedModal && evt.target === openedModal) {
+    closeModal(openedModal);
+  }
+});
 const modalCloseBtns = document.querySelectorAll(".modal__close-btn");
 modalCloseBtns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -86,7 +102,7 @@ const cardTemplate = document
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
-function getCardElement(data) {
+function newCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
@@ -117,8 +133,8 @@ function getCardElement(data) {
 function handleAddCardSubmit(evt) {
   disableButton(cardSubmitButton);
   closeModal(newPostModal);
-  const inputValue = getCardElement({
-    name: CaptionInput.value,
+  const inputValue = newCardElement({
+    name: captionInput.value,
     link: imageInput.value,
   });
   addCardForm.reset();
@@ -129,6 +145,6 @@ function handleAddCardSubmit(evt) {
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
+  const cardElement = newCardElement(item);
   cardsList.append(cardElement);
 });
