@@ -161,52 +161,19 @@
 .modal__image-container {
   padding: 16px;
 }
-@media screen and (max-width: 360px) {
-  .modal__container {
-    margin: 10px;
-    padding: 10px;
-  }
-  .modal__save-btn {
-    margin: 24px 0 0;
-    max-width: none;
-    width: 100%;
-  }
-  .modal__title {
-    font-size: 20px;
-    margin: 12px 0;
-    border-radius: 8px;
-  }
-  .modal__image-container {
-    margin: 0;
-    object-fit: contain;
-  }
-  .modal__caption {
-    margin: 8px 0 0;
-    border-radius: 8px;
-  }
 
-  .modal__close-btn {
-    top: 12px;
-    right: 12px;
-  }
-  .modal__image {
-    max-width: unset;
-    min-width: 288px;
-    margin: 0;
-  }
-
-  .modal__caption {
-    font-family: "Poppins", Arial, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-  }
-  .modal__close-btn_type_preview {
-    top: -48px;
-    right: 0;
-  }
+.modal__caption {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
 }
-@media screen and (max-width: 472px) {
+.modal__close-btn_type_preview {
+  top: -48px;
+  right: 0;
+}
+
+@media screen and (max-width: 480px) {
   .modal__container {
     margin: 10px;
     padding: 10px;
