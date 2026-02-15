@@ -31,8 +31,8 @@ const initialCards = [
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
-const profileSaveBtn = editProfileModal.querySelector("#profile_save-btn");
+const editProfileForm = document.querySelector(".modal__form");
+
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input",
 );
@@ -48,16 +48,29 @@ const newPostBtn = document.querySelector("#profile-add-btn");
 const imageInput = newPostModal.querySelector("#profile-image-input");
 const captionInput = newPostModal.querySelector("#profile-caption-input");
 const addCardForm = document.querySelector("#add_card_form");
-//const openModal = (modal) => {
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+
   document.addEventListener("keydown", handleEscClose);
+  resetValidation(modal, settings);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
   document.removeEventListener("keydown", handleEscClose);
 }
+const popups = document.querySelectorAll(".modal");
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_is-opened")) {
+      closeModal(popup);
+    }
+    if (evt.target.classList.contains("modal__close-btn")) {
+      closeModal(popup);
+    }
+  });
+});
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal.modal_is-opened");
@@ -66,12 +79,6 @@ function handleEscClose(evt) {
     }
   }
 }
-document.addEventListener("mousedown", (evt) => {
-  const openedModal = document.querySelector(".modal.modal_is-opened");
-  if (openedModal && evt.target === openedModal) {
-    closeModal(openedModal);
-  }
-});
 const modalCloseBtns = document.querySelectorAll(".modal__close-btn");
 modalCloseBtns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -131,7 +138,8 @@ function newCardElement(data) {
 }
 
 function handleAddCardSubmit(evt) {
-  disableButton(cardSubmitButton);
+  evt.preventDefault();
+  disableButton(cardSubmitButton, settings);
   closeModal(newPostModal);
   const inputValue = newCardElement({
     name: captionInput.value,
@@ -139,7 +147,6 @@ function handleAddCardSubmit(evt) {
   });
   addCardForm.reset();
   cardsList.prepend(inputValue);
-  evt.preventDefault();
 }
 
 addCardForm.addEventListener("submit", handleAddCardSubmit);
