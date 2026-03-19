@@ -32,20 +32,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      favicon: "./src/images/spots-images/favicon.ico", // favicon handled automatically
+      favicon: "./src/images/favicon.ico", // favicon handled automatically
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
     new CleanWebpackPlugin(),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "dist"), // serve from dist
     },
-    compress: true,
-    port: 8080,
-    open: true,
-    hot: true,
-    liveReload: true,
+    compress: true, // gzip compression
+    port: 8080, // port
+    open: true, // open browser
+    hot: true, // enable HMR
+    liveReload: true, // enable live reload
   },
   target: ["web", "es5"],
 };
