@@ -34,8 +34,8 @@
     "core-js": "3.23.5"
   },
   "scripts": {
+    "clean": "rd /s /q dist || exit 0",
     "build": "webpack --mode production",
-    "clean": "rimraf dist",
     "dev": "webpack serve --mode development",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
