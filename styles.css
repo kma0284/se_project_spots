@@ -354,13 +354,13 @@ template {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url(35d26b781dc5fda684cc.ttf) format("truetype");
+  src: url(/se_project_spots/35d26b781dc5fda684cc.ttf) format("truetype");
 }
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url(673ed42382ab264e0bf5.ttf) format("truetype");
+  src: url(/se_project_spots/673ed42382ab264e0bf5.ttf) format("truetype");
 }
 
 .page {
@@ -576,7 +576,7 @@ template {
   width: 100%;
 }
 .card__delete-btn {
-  background-image: url(681e9a719890c3953022.svg);
+  background-image: url(/se_project_spots/681e9a719890c3953022.svg);
   height: 32px;
   width: 32px;
   border: none;
@@ -590,7 +590,7 @@ template {
   cursor: pointer;
 }
 .card__delete-btn:hover {
-  background-image: url(58c61e0eac124c5e75fa.svg);
+  background-image: url(/se_project_spots/58c61e0eac124c5e75fa.svg);
 }
 .card__title {
   margin: 12px 0 0;
@@ -606,7 +606,7 @@ template {
   flex-wrap: nowrap;
 }
 .card__like-button {
-  background-image: url(1408283b2eeada9700b0.svg);
+  background-image: url(/se_project_spots/1408283b2eeada9700b0.svg);
   background-repeat: no-repeat;
   background-color: transparent;
   margin: 12px 0 0;
@@ -618,7 +618,7 @@ template {
   cursor: pointer;
 }
 .card__like-button_active {
-  background-image: url(0bb42f0e46b29342b0f1.svg);
+  background-image: url(/se_project_spots/0bb42f0e46b29342b0f1.svg);
   opacity: 1;
 }
 .card__like-button:hover {
