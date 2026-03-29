@@ -738,6 +738,7 @@ template {
   font-weight: 500;
   font-size: 16px;
   gap: 8px;
+  opacity: 0;
 }
 .modal__input::placeholder {
   color: #2121214d;
@@ -758,6 +759,7 @@ template {
 .modal__save-btn_disabled {
   background: #212121;
   opacity: 0.5;
+  pointer-events: none;
 }
 .modal__save-btn_disabled:hover {
   background: #212121;
@@ -823,56 +825,8 @@ template {
   top: -48px;
   right: 0;
 }
-/* Confirmation Modal */
-.confirm-delete-modal .modal__content {
-  width: 400px;
-  max-width: 90%;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.confirm-delete-modal .modal__title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.confirm-delete-modal .modal__text {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.confirm-delete-modal .modal__actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.confirm-delete-modal .modal__cancel-btn,
-.confirm-delete-modal .modal__confirm-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.confirm-delete-modal .modal__cancel-btn {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.confirm-delete-modal .modal__confirm-btn {
-  background-color: #ff4d4d; /* red for danger */
-  color: #fff;
-}
-.modal__cancel-btn {
-  margin-top: 10px;
-  background: transparent;
-  border: 1px solid #ccc;
-  padding: 8px;
-  cursor: pointer;
+.modal__error_visible {
+  opacity: 1;
 }
 
 @media screen and (max-width: 480px) {
@@ -933,4 +887,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.37581d6caacf2b78fc99.css.map*/
+/*# sourceMappingURL=main.791f3c6bfb213b389afb.css.map*/
