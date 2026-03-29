@@ -429,6 +429,9 @@ template {
   flex-direction: column;
 }
 
+.profile__avatar-container {
+}
+
 .profile__description {
   margin: 0 0 18px;
   color: #212121b2;
@@ -445,7 +448,7 @@ template {
 }
 
 .profile__edit-btn {
-  margin: auto;
+  margin: auto auto 0 0;
   width: 108px;
   display: flex;
   border: none;
@@ -655,10 +658,6 @@ template {
   visibility: visible;
   opacity: 1;
 }
-.modal__confirm-btn,
-.modal__cancel-btn {
-  padding: 18px 32px;
-}
 
 .modal__form_type_delete {
   display: flex;
@@ -674,6 +673,7 @@ template {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  padding: 18px 32px;
 }
 
 .modal__confirm-btn {
@@ -683,6 +683,7 @@ template {
 
 .modal__cancel-btn {
   background: #ccc;
+  color: white;
 }
 
 .modal__container {
@@ -908,4 +909,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.87c3b173fd96095f4177.css.map*/
+/*# sourceMappingURL=main.4fdc1e059cc4f37bfe96.css.map*/
