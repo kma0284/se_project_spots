@@ -404,19 +404,12 @@ template {
   padding: 34px 0 20px;
   border-bottom: 1px solid rgba(33, 33, 33, 0.4);
 }
-
-.profile__column {
-  display: flex;
-  flex-direction: column;
-}
-
 .profile__avatar {
   height: 190px;
   width: 190px;
   border-radius: 8px;
   cursor: pointer;
 }
-
 .profile__name {
   margin: 0 0 12px;
   color: #212121;
@@ -431,6 +424,10 @@ template {
   -webkit-box-orient: vertical;
   max-width: 420px;
 }
+/* .profile__column {
+  display: flex;
+  flex-direction: column;
+} */
 
 .profile__description {
   margin: 0 0 18px;
@@ -544,6 +541,14 @@ template {
 .card {
   position: relative;
 }
+.card__content {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
 .card__image {
   height: 413px;
   width: 100%;
@@ -551,33 +556,6 @@ template {
   object-fit: cover;
   display: block;
   cursor: pointer;
-}
-
-.card__content {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-
-  width: 100%;
-}
-.card__delete-btn {
-  background-image: url(../images/delete.svg);
-  height: 32px;
-  width: 32px;
-  border: none;
-  background-color: transparent;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-repeat: no-repeat;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-}
-.card__delete-btn:hover {
-  background-image: url(../images/deleteHover.svg);
 }
 .card__title {
   margin: 12px 0 0;
@@ -614,6 +592,25 @@ template {
 .card__like-btn_active:hover {
   opacity: 0.4;
 }
+
+.card__delete-btn {
+  background-image: url(../images/delete.svg);
+  height: 32px;
+  width: 32px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.card__delete-btn:hover {
+  background-image: url(../images/deleteHover.svg);
+}
+
 @media screen and (max-width: 630px) {
   .card__image {
     height: 288px;
@@ -636,7 +633,7 @@ template {
   color: rgba(33, 33, 33, 0.7);
 }
 
-.modal {
+/* .modal {
   visibility: hidden;
   background-color: #00000080;
   position: fixed;
@@ -668,7 +665,7 @@ template {
 }
 
 .modal__close-btn {
-  background-image: url(../images/closeIcon.svg);
+  background-image: url("../images/spots-images/closeIcon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -712,7 +709,7 @@ template {
   box-sizing: border-box;
   margin: 8px 0 8px;
   border: 1px solid #21212166;
-
+  color: #212121;
   padding: 16px 12px;
   border-radius: 8px;
   border-width: 1px;
@@ -882,9 +879,215 @@ template {
   .modal__image {
     max-width: unset;
   }
+} */
+.modal {
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-in,
+    visibility 0.3s linear;
+
+  z-index: 1000; /* ✅ FIX: prevents footer overlap */
+}
+
+.modal_is-opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__container {
+  max-width: 730px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 32px 50px;
+  box-sizing: border-box;
+  position: relative; /* ✅ REQUIRED for close button */
+}
+
+/* ================= CLOSE BUTTON ================= */
+
+.modal__close-btn {
+  background-image: url(../images/closeIcon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  border: none;
+  width: 40px;
+  height: 40px;
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  cursor: pointer;
+}
+
+.modal__close-btn:hover {
+  opacity: 0.4;
+}
+
+/* ================= FORM ================= */
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: #212121;
+}
+
+.modal__label {
+  margin: 0 0 32px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  color: #212121b2;
+}
+
+.modal__input {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 16px 12px;
+
+  border: 1px solid #21212166;
+  border-radius: 8px;
+
+  color: #212121;
+  box-sizing: border-box;
+}
+
+.modal__input::placeholder {
+  color: #2121214d;
+}
+
+.modal__input_type_error {
+  border: 1px solid #ff000099;
+}
+
+.modal__error {
+  font-size: 16px;
+  color: #ff0000b2;
+  opacity: 0;
+}
+
+.modal__error_visible {
+  opacity: 1;
+}
+
+/* ================= BUTTONS ================= */
+
+.modal__save-btn {
+  max-width: 156px;
+  height: 52px;
+  padding: 18px 32px;
+
+  background-color: #212121;
+  color: #fcf5e5;
+
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__save-btn_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ⚠️ FIX: commas removed */
+.modal__confirm-btn {
+  width: 156px;
+  height: 52px;
+  padding: 18px 32px;
+  background-color: #ff6565;
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  padding: 18px 32px;
+}
+
+/* ================= IMAGE MODAL ================= */
+
+.modal__image-container {
+  position: relative;
+  padding: 16px;
+  display: flex; /* ✅ FIX: was missing */
+  flex-direction: column;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.modal__caption {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background-color: #212121;
+  color: white;
+  border-radius: 8px;
+  width: fit-content;
+  font-size: 16px;
+}
+
+/* ================= PREVIEW CLOSE ================= */
+
+.modal__close-btn_type_preview {
+  position: absolute;
+  top: -48px;
+  right: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media screen and (max-width: 480px) {
+  .modal__container {
+    margin: 10px;
+    padding: 16px;
+  }
+
+  .modal__save-btn {
+    width: 100%;
+    max-width: none;
+    margin-top: 24px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  .modal__image {
+    min-width: 288px;
+  }
 }
 
 
 
 
-/*# sourceMappingURL=main.aab3132728f9b38c6b78.css.map*/
+/*# sourceMappingURL=main.b9b1bf81c5b6b8d806bc.css.map*/
