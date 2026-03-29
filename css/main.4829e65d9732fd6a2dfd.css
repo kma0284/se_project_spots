@@ -841,6 +841,8 @@ template {
 }
 .modal__cancel-btn {
   padding: 18px, 32px;
+  width: 156px;
+  height: 52px;
 }
 @media screen and (max-width: 480px) {
   .modal__container {
@@ -900,4 +902,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.3fb4f94d70159c5983b0.css.map*/
+/*# sourceMappingURL=main.4829e65d9732fd6a2dfd.css.map*/
