@@ -445,7 +445,7 @@ template {
 }
 
 .profile__edit-btn {
-  margin: auto 0 20px;
+  margin: auto 0 0;
   width: 108px;
   display: flex;
   border: none;
@@ -868,4 +868,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.3448bc9911e88c8bdef7.css.map*/
+/*# sourceMappingURL=main.a5724c6ec1feda6af0ff.css.map*/
