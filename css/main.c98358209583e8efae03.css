@@ -664,7 +664,7 @@ template {
   border-radius: 8px;
   padding: 32px 50px;
   box-sizing: border-box;
-  position: relative; /* ✅ REQUIRED for close button */
+  position: relative;
 }
 
 /* ================= CLOSE BUTTON ================= */
@@ -864,4 +864,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.b8861c3f925b6c88de87.css.map*/
+/*# sourceMappingURL=main.c98358209583e8efae03.css.map*/
