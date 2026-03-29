@@ -606,7 +606,7 @@ template {
   -webkit-box-orient: vertical;
   flex-wrap: nowrap;
 }
-.card__like-button {
+.card__like-btn {
   background-image: url(../images/likeIcon.svg);
   background-repeat: no-repeat;
   background-color: transparent;
@@ -618,14 +618,14 @@ template {
   opacity: 0.4;
   cursor: pointer;
 }
-.card__like-button_active {
+.card__like-btn_active {
   background-image: url(../images/likeNoHover.svg);
   opacity: 1;
 }
-.card__like-button:hover {
+.card__like-btn:hover {
   opacity: 1;
 }
-.card__like-button_active:hover {
+.card__like-btn_active:hover {
   opacity: 0.4;
 }
 @media screen and (max-width: 630px) {
@@ -926,4 +926,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.d1aba42956ceb6bc9882.css.map*/
+/*# sourceMappingURL=main.aedd2080e8a2ba8bc01f.css.map*/
