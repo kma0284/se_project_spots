@@ -354,13 +354,13 @@ template {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url(../35d26b781dc5fda684cc.ttf) format("truetype");
+  src: url(../fonts/Poppins-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url(../673ed42382ab264e0bf5.ttf) format("truetype");
+  src: url(../fonts/Poppins-Medium.ttf) format("truetype");
 }
 
 .page {
@@ -926,4 +926,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.8b1d58d4bbc93a65cc33.css.map*/
+/*# sourceMappingURL=main.d1aba42956ceb6bc9882.css.map*/
