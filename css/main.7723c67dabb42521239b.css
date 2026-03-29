@@ -424,10 +424,10 @@ template {
   -webkit-box-orient: vertical;
   max-width: 420px;
 }
-/* .profile__column {
+.profile__column {
   display: flex;
   flex-direction: column;
-} */
+}
 
 .profile__description {
   margin: 0 0 18px;
@@ -868,4 +868,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.5e6920e6bc7bb3d180bd.css.map*/
+/*# sourceMappingURL=main.7723c67dabb42521239b.css.map*/
