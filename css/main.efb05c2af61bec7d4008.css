@@ -682,6 +682,10 @@ template {
 }
 
 .modal__close-btn {
+  background-image: url(../images/closeIcon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border: none;
   padding: 0;
   width: 40px;
@@ -892,4 +896,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.39764eafe20a397f814e.css.map*/
+/*# sourceMappingURL=main.efb05c2af61bec7d4008.css.map*/
