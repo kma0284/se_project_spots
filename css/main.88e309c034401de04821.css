@@ -655,7 +655,10 @@ template {
   visibility: visible;
   opacity: 1;
 }
-
+.modal__confirm-btn,
+.modal__cancel-btn {
+  padding: 18px 32px;
+}
 .modal__container {
   max-width: 730px;
   width: 100%;
@@ -781,7 +784,18 @@ template {
   display: flex;
   flex-direction: column;
 }
-
+.modal__actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.modal__actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
 .modal__image {
   max-width: 80vw;
   max-height: 80vh;
@@ -868,4 +882,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.7723c67dabb42521239b.css.map*/
+/*# sourceMappingURL=main.88e309c034401de04821.css.map*/
