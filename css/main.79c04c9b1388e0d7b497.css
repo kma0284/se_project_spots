@@ -828,7 +828,10 @@ template {
 .modal__error_visible {
   opacity: 1;
 }
-
+.modal__confirm-btn {
+  width: 156px;
+  height: 52px;
+}
 @media screen and (max-width: 480px) {
   .modal__container {
     margin: 10px;
@@ -887,4 +890,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.791f3c6bfb213b389afb.css.map*/
+/*# sourceMappingURL=main.79c04c9b1388e0d7b497.css.map*/
