@@ -867,6 +867,13 @@ template {
   background-color: #ff4d4d; /* red for danger */
   color: #fff;
 }
+.modal__cancel-btn {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 480px) {
   .modal__container {
@@ -926,4 +933,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.aedd2080e8a2ba8bc01f.css.map*/
+/*# sourceMappingURL=main.37581d6caacf2b78fc99.css.map*/
