@@ -648,8 +648,6 @@ template {
   transition:
     opacity 0.3s ease-in,
     visibility 0.3s linear;
-
-  z-index: 1000;
 }
 
 .modal_is-opened {
@@ -723,7 +721,7 @@ template {
   box-sizing: border-box;
 }
 
-.modal__input::placeholder {
+.modal__input::placeholder-shown {
   color: #2121214d;
 }
 
@@ -864,4 +862,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.c98358209583e8efae03.css.map*/
+/*# sourceMappingURL=main.7a78144a045620382df6.css.map*/
