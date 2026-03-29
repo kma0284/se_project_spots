@@ -832,7 +832,7 @@ template {
   width: 156px;
   height: 52px;
   padding: 18px, 32px;
-  color: #ff6565;
+  background-color: #ff6565;
 }
 @media screen and (max-width: 480px) {
   .modal__container {
@@ -892,4 +892,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.d97b7d8706b104273f71.css.map*/
+/*# sourceMappingURL=main.39764eafe20a397f814e.css.map*/
