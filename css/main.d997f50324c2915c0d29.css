@@ -1054,7 +1054,34 @@ template {
   width: fit-content;
   font-size: 16px;
 }
+.modal__form_type_delete {
+  display: flex;
+  justify-content: center; /* centers both buttons as a group */
+  gap: 20px; /* 🔥 exactly 20px between buttons */
+  margin-top: 24px;
+}
 
+.modal__confirm-btn {
+  width: 156px;
+  height: 52px;
+  padding: 18px 32px;
+  background-color: #ff6565;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  padding: 18px 32px;
+  background-color: #212121;
+  color: #fcf5e5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 /* ================= PREVIEW CLOSE ================= */
 
 .modal__close-btn_type_preview {
@@ -1090,4 +1117,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.b9b1bf81c5b6b8d806bc.css.map*/
+/*# sourceMappingURL=main.d997f50324c2915c0d29.css.map*/
