@@ -659,6 +659,32 @@ template {
 .modal__cancel-btn {
   padding: 18px 32px;
 }
+
+.modal__form_type_delete {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.modal__confirm-btn,
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__confirm-btn {
+  background: #ff6565;
+  color: white;
+}
+
+.modal__cancel-btn {
+  background: #ccc;
+}
+
 .modal__container {
   max-width: 730px;
   width: 100%;
@@ -882,4 +908,4 @@ template {
 
 
 
-/*# sourceMappingURL=main.88e309c034401de04821.css.map*/
+/*# sourceMappingURL=main.87c3b173fd96095f4177.css.map*/
