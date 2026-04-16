@@ -1,0 +1,308 @@
+// CSS
+import "./index.css";
+import "../vendor/normalize.css";
+
+// API
+import Api from "../utils/Api.js";
+
+// IMAGES (Webpack)
+import avatarImg from "../images/spots-images/avatar.jpg";
+import logoImg from "../images/spots-images/Logo.svg";
+import editIcon from "../images/spots-images/editIcon.svg";
+import addIcon from "../images/spots-images/addIcon.svg";
+import closeIcon from "../images/spots-images/closeIcon.svg";
+import editIconLight from "../images/spots-images/editIcon-light.svg";
+
+// CONSTANTS
+import {
+  settings,
+  profileAvatar,
+  profileNameEl,
+  profileDescriptionEl,
+  editProfileBtn,
+  newPostBtn,
+  avatarEditBtn,
+  editProfileModal,
+  newPostModal,
+  previewModal,
+  avatarModal,
+  deleteModal,
+  editProfileForm,
+  addCardForm,
+  avatarForm,
+  deleteForm,
+  nameInput,
+  descriptionInput,
+  imageInput,
+  captionInput,
+  avatarInput,
+  cardsList,
+  cardTemplate,
+} from "../utils/constants.js";
+
+// VALIDATION
+import {
+  enableValidation,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+
+enableValidation(settings);
+
+// API INSTANCE
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "5a1d0a6b-552b-434f-ae89-d4d2dc0ea465",
+    "Content-Type": "application/json",
+  },
+});
+
+// CURRENT USER
+let currentUserId;
+
+// SET STATIC IMAGES
+function setStaticImages() {
+  document.querySelector(".header__logo").src = logoImg;
+  profileAvatar.src = avatarImg;
+
+  const avatarEditImg = document.querySelector(".profile__avatar-edit-btn img");
+
+  //  responsive icon
+  if (window.innerWidth <= 630) {
+    avatarEditImg.src = editIconLight;
+  } else {
+    avatarEditImg.src = editIcon;
+  }
+
+  document.querySelector(".profile__edit-btn img").src = editIcon;
+  document.querySelector(".profile__add-btn img").src = addIcon;
+
+  document.querySelectorAll(".modal__close-btn img").forEach((img) => {
+    img.src = closeIcon;
+  });
+}
+
+setStaticImages();
+function handleAvatarIcon() {
+  const avatarEditImg = document.querySelector(".profile__avatar-edit-btn img");
+
+  if (window.innerWidth <= 630) {
+    avatarEditImg.src = editIconLight; //  mobile icon
+  } else {
+    avatarEditImg.src = editIcon; //  desktop icon
+  }
+}
+
+// run on load
+handleAvatarIcon();
+
+// run on resize
+window.addEventListener("resize", handleAvatarIcon);
+// MODALS
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const opened = document.querySelector(".modal_is-opened");
+    if (opened) closeModal(opened);
+  }
+}
+
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
+
+  const form = modal.querySelector("form");
+  if (form) resetValidation(form, settings);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
+}
+
+// overlay + close
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target === modal ||
+      evt.target.closest(".modal__close-btn") ||
+      evt.target.closest(".modal__cancel-btn")
+    ) {
+      closeModal(modal);
+    }
+  });
+});
+
+// PROFILE EDIT
+editProfileBtn.addEventListener("click", () => {
+  nameInput.value = profileNameEl.textContent;
+  descriptionInput.value = profileDescriptionEl.textContent;
+  openModal(editProfileModal);
+});
+
+editProfileForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const btn = evt.submitter;
+  btn.textContent = "Saving...";
+
+  api
+    .editUserInfo({
+      name: nameInput.value,
+      about: descriptionInput.value,
+    })
+    .then((data) => {
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.about;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error)
+    .finally(() => (btn.textContent = "Save"));
+});
+
+// AVATAR
+// Edit avatar
+avatarEditBtn.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+
+avatarForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const btn = evt.submitter;
+  btn.textContent = "Saving...";
+
+  api
+    .updateAvatar({ avatar: avatarInput.value })
+    .then((data) => {
+      profileAvatar.src = data.avatar;
+      avatarForm.reset();
+      closeModal(avatarModal);
+    })
+    .catch(console.error)
+    .finally(() => (btn.textContent = "Save"));
+});
+
+// CARDS
+let selectedCard;
+let selectedCardId;
+
+function createCard(data) {
+  const card = cardTemplate.content.querySelector(".card").cloneNode(true);
+
+  const img = card.querySelector(".card__image");
+  const title = card.querySelector(".card__title");
+  const likeBtn = card.querySelector(".card__like-btn");
+  const deleteBtn = card.querySelector(".card__delete-btn");
+
+  img.src = data.link;
+  img.alt = data.name;
+  title.textContent = data.name;
+
+  // like state
+  const isLiked = (data.likes || []).some((user) => user._id === currentUserId);
+
+  if (isLiked) {
+    likeBtn.classList.add("card__like-btn_active");
+  }
+
+  likeBtn.addEventListener("click", () => {
+    const liked = likeBtn.classList.contains("card__like-btn_active");
+
+    const request = liked ? api.unlikeCard(data._id) : api.likeCard(data._id);
+
+    request
+      .then(() => {
+        likeBtn.classList.toggle("card__like-btn_active");
+      })
+      .catch(console.error);
+  });
+
+  // delete
+  deleteBtn.addEventListener("click", () => {
+    selectedCard = card;
+    selectedCardId = data._id;
+    openModal(deleteModal);
+  });
+
+  // preview
+  img.addEventListener("click", () => {
+    const previewImg = previewModal.querySelector(".modal__image");
+    const previewCaption = previewModal.querySelector(".modal__caption");
+
+    previewImg.src = data.link;
+    previewImg.alt = data.name;
+    previewCaption.textContent = data.name;
+
+    openModal(previewModal);
+  });
+
+  return card;
+}
+
+// DELETE CARD
+deleteForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const btn = evt.submitter;
+  btn.textContent = "Deleting...";
+
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      selectedCard = null;
+      selectedCardId = null;
+      closeModal(deleteModal);
+    })
+    .catch(console.error)
+    .finally(() => (btn.textContent = "Delete"));
+});
+
+// ADD CARD
+newPostBtn.addEventListener("click", () => openModal(newPostModal));
+
+addCardForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const btn = evt.submitter;
+  btn.textContent = "Saving...";
+
+  api
+    .addCard({
+      name: captionInput.value,
+      link: imageInput.value,
+    })
+    .then((data) => {
+      const card = createCard(data);
+      cardsList.prepend(card);
+
+      addCardForm.reset();
+
+      const submitBtn = addCardForm.querySelector(".modal__save-btn");
+      disableButton(submitBtn, settings);
+
+      closeModal(newPostModal);
+    })
+    .catch(console.error)
+    .finally(() => (btn.textContent = "Save"));
+});
+// INITIAL LOAD
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([user, cards]) => {
+    currentUserId = user._id;
+
+    //  set profile
+    profileNameEl.textContent = user.name;
+    profileDescriptionEl.textContent = user.about;
+    profileAvatar.src = user.avatar;
+
+    const cardsArray = Array.isArray(cards) ? cards : cards.data;
+
+    cardsArray
+      .slice()
+      .reverse()
+      .forEach((cardData) => {
+        const cardElement = createCard(cardData);
+        if (cardElement) {
+          cardsList.append(cardElement);
+        }
+      });
+  })
+  .catch((err) => console.error("API ERROR:", err));
