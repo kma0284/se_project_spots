@@ -1,6 +1,15 @@
 .card {
   position: relative;
 }
+.card__content {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .card__image {
   height: 413px;
   width: 100%;
@@ -49,7 +58,7 @@
   -webkit-box-orient: vertical;
   flex-wrap: nowrap;
 }
-.card__like-button {
+.card__like-btn {
   background-image: url(../images/spots-images/LikeIcon.svg);
   background-repeat: no-repeat;
   background-color: transparent;
@@ -61,14 +70,14 @@
   opacity: 0.4;
   cursor: pointer;
 }
-.card__like-button_active {
+.card__like-btn_active {
   background-image: url(../images/spots-images/likeNoHover.svg);
   opacity: 1;
 }
-.card__like-button:hover {
+.card__like-btn:hover {
   opacity: 1;
 }
-.card__like-button_active:hover {
+.card__like-btn_active:hover {
   opacity: 0.4;
 }
 @media screen and (max-width: 630px) {
