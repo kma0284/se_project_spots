@@ -35,6 +35,10 @@
   font-size: 16px;
   color: white;
   align-self: flex-end;
+  opacity: 0;
+}
+.profile__avatar-edit-btn:hover {
+  opacity: 1;
 }
 
 .profile__avatar-edit-btn img {

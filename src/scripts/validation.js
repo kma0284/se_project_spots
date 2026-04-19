@@ -82,7 +82,6 @@ export function enableValidation(config) {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
 
   forms.forEach((form) => {
-    const submitButton = form.querySelector(config.submitButtonSelector);
     setEventListeners(form, config);
   });
 }
