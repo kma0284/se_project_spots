@@ -38,6 +38,7 @@ import {
   avatarInput,
   cardsList,
   cardTemplate,
+  handleAddCardSubmit,
 } from "../utils/constants.js";
 
 // VALIDATION
@@ -58,47 +59,16 @@ const api = new Api({
   },
 });
 
-// CURRENT USER
-let currentUserId;
+const previewImg = previewModal.querySelector(".modal__image");
+const previewCaption = previewModal.querySelector(".modal__caption");
+document.querySelector(".profile__avatar").src = avatarImg;
+document.querySelector(".header__logo").src = logoImg;
 
-// SET STATIC IMAGES
-function setStaticImages() {
-  document.querySelector(".header__logo").src = logoImg;
-  profileAvatar.src = avatarImg;
+document.querySelector(".profile__edit-btn img").src = editIcon;
+document.querySelector(".profile__add-btn img").src = addIcon;
 
-  const avatarEditImg = document.querySelector(".profile__avatar-edit-btn img");
+document.querySelector(".profile__avatar-edit-btn img").src = editIconLight;
 
-  //  responsive icon
-  if (window.innerWidth <= 630) {
-    avatarEditImg.src = editIconLight;
-  } else {
-    avatarEditImg.src = editIcon;
-  }
-
-  document.querySelector(".profile__edit-btn img").src = editIcon;
-  document.querySelector(".profile__add-btn img").src = addIcon;
-
-  document.querySelectorAll(".modal__close-btn img").forEach((img) => {
-    img.src = closeIcon;
-  });
-}
-
-setStaticImages();
-function handleAvatarIcon() {
-  const avatarEditImg = document.querySelector(".profile__avatar-edit-btn img");
-
-  if (window.innerWidth <= 630) {
-    avatarEditImg.src = editIconLight; //  mobile icon
-  } else {
-    avatarEditImg.src = editIcon; //  desktop icon
-  }
-}
-
-// run on load
-handleAvatarIcon();
-
-// run on resize
-window.addEventListener("resize", handleAvatarIcon);
 // MODALS
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
@@ -110,7 +80,9 @@ function handleEscClose(evt) {
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
   document.addEventListener("keydown", handleEscClose);
-
+  document.querySelectorAll(".modal__close-btn img").forEach((img) => {
+    img.src = closeIcon;
+  });
   const form = modal.querySelector("form");
   if (form) resetValidation(form, settings);
 }
@@ -146,7 +118,7 @@ editProfileForm.addEventListener("submit", (evt) => {
   btn.textContent = "Saving...";
 
   api
-    .editUserInfo({
+    .updateUserInfo({
       name: nameInput.value,
       about: descriptionInput.value,
     })
@@ -198,7 +170,7 @@ function createCard(data) {
   title.textContent = data.name;
 
   // like state
-  const isLiked = (data.likes || []).some((user) => user._id === currentUserId);
+  const isLiked = data.isLiked;
 
   if (isLiked) {
     likeBtn.classList.add("card__like-btn_active");
@@ -225,9 +197,6 @@ function createCard(data) {
 
   // preview
   img.addEventListener("click", () => {
-    const previewImg = previewModal.querySelector(".modal__image");
-    const previewCaption = previewModal.querySelector(".modal__caption");
-
     previewImg.src = data.link;
     previewImg.alt = data.name;
     previewCaption.textContent = data.name;
@@ -274,8 +243,7 @@ addCardForm.addEventListener("submit", (evt) => {
       cardsList.prepend(card);
 
       addCardForm.reset();
-
-      const submitBtn = addCardForm.querySelector(".modal__save-btn");
+      const submitBtn = evt.submitter;
       disableButton(submitBtn, settings);
 
       closeModal(newPostModal);
@@ -284,7 +252,8 @@ addCardForm.addEventListener("submit", (evt) => {
     .finally(() => (btn.textContent = "Save"));
 });
 // INITIAL LOAD
-Promise.all([api.getUserInfo(), api.getInitialCards()])
+let currentUserId;
+Promise.all([api.getUserInfo(), api.getCards()])
   .then(([user, cards]) => {
     currentUserId = user._id;
 
@@ -293,7 +262,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     profileDescriptionEl.textContent = user.about;
     profileAvatar.src = user.avatar;
 
-    const cardsArray = Array.isArray(cards) ? cards : cards.data;
+    const cardsArray = cards;
 
     cardsArray
       .slice()

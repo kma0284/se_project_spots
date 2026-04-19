@@ -83,10 +83,6 @@ export function enableValidation(config) {
 
   forms.forEach((form) => {
     const submitButton = form.querySelector(config.submitButtonSelector);
-
-    // 🔥 Skip delete modal (no submit button)
-    if (!submitButton) return;
-
     setEventListeners(form, config);
   });
 }

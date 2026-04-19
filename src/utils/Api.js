@@ -8,74 +8,69 @@ export default class Api {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
+  _request(endpoint, options = {}) {
+    const finalOptions = {
+      ...options,
+      headers: {
+        ...this._headers,
+        ...options.headers,
+      },
+    };
+
+    const url = `${this._baseUrl}${endpoint}`;
+    return fetch(url, finalOptions).then((res) => this._handleResponse(res));
+  }
+
+  // -------------------------
+  // USER
+
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
-    }).then(this._handleResponse);
+    return this._request("/users/me");
   }
 
   updateUserInfo(data) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request("/users/me", {
       method: "PATCH",
-      headers: this._headers,
       body: JSON.stringify(data),
-      b,
-    }).then(this._handleResponse);
-  }
-
-  getCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._handleResponse);
-  }
-
-  addCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then(this._handleResponse);
-  }
-
-  deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   updateAvatar(data) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request("/users/me/avatar", {
       method: "PATCH",
-      headers: this._headers,
       body: JSON.stringify(data),
-    }).then(this._handleResponse);
-  }
-  editUserInfo(data) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then(this._handleResponse);
+    });
   }
 
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._handleResponse);
+  // -------------------------
+  // CARDS
+
+  getCards() {
+    return this._request("/cards");
+  }
+
+  addCard(data) {
+    return this._request("/cards", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  deleteCard(cardId) {
+    return this._request(`/cards/${cardId}`, {
+      method: "DELETE",
+    });
   }
 
   likeCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return this._request(`/cards/${id}/likes`, {
       method: "PUT",
-      headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   unlikeCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return this._request(`/cards/${id}/likes`, {
       method: "DELETE",
-      headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 }
