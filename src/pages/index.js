@@ -10,8 +10,9 @@ import avatarImg from "../images/spots-images/avatar.jpg";
 import logoImg from "../images/spots-images/Logo.svg";
 import editIcon from "../images/spots-images/editIcon.svg";
 import addIcon from "../images/spots-images/addIcon.svg";
-import closeIcon from "../images/spots-images/closeIcon.svg";
+import closeIcon from "../images/spots-images/close.svg";
 import editIconLight from "../images/spots-images/editIcon-light.svg";
+import closePreview from "../images/spots-images/closePreview.svg";
 
 // CONSTANTS
 import {
@@ -63,11 +64,18 @@ const previewImg = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 document.querySelector(".profile__avatar").src = avatarImg;
 document.querySelector(".header__logo").src = logoImg;
-
-document.querySelector(".profile__edit-btn img").src = editIcon;
-document.querySelector(".profile__add-btn img").src = addIcon;
-
-document.querySelector(".profile__avatar-edit-btn img").src = editIconLight;
+document.querySelector(".profile__edit-btn").style.backgroundImage =
+  `url(${editIcon})`;
+document.querySelector(".profile__add-btn").style.backgroundImage =
+  `url(${addIcon})`;
+document.querySelector(".profile__avatar-edit-btn").style.backgroundImage =
+  `url(${editIconLight})`;
+document.querySelectorAll(".modal__close-btn").forEach((btn) => {
+  btn.style.backgroundImage = `url(${closeIcon})`;
+});
+document.querySelectorAll("modal__close-btn_type_preview").forEach((btn) => {
+  btn.style.backgroundImage = `url(${closePreview})`;
+});
 
 // MODALS
 function handleEscClose(evt) {
@@ -79,10 +87,9 @@ function handleEscClose(evt) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+
   document.addEventListener("keydown", handleEscClose);
-  document.querySelectorAll(".modal__close-btn img").forEach((img) => {
-    img.src = closeIcon;
-  });
+
   const form = modal.querySelector("form");
   if (form) resetValidation(form, settings);
 }

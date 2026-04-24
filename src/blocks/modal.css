@@ -34,11 +34,10 @@
   padding: 0;
   width: 40px;
   height: 40px;
-  background: url(../images/spots-images/close.svg);
   background-repeat: no-repeat;
+  background-color: transparent;
   background-position: center;
   background-size: contain;
-  align-self: center;
   position: absolute;
   right: 12px;
   cursor: pointer;
@@ -47,7 +46,7 @@
 }
 
 .modal__close-btn:hover {
-  opacity: 0.4;
+  opacity: 0.4%;
 }
 
 .modal__form {
