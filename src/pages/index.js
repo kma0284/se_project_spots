@@ -12,7 +12,7 @@ import editIcon from "../images/spots-images/editIcon.svg";
 import addIcon from "../images/spots-images/addIcon.svg";
 import closeIcon from "../images/spots-images/close.svg";
 import editIconLight from "../images/spots-images/editIcon-light.svg";
-import closePreview from "../images/spots-images/closePreview.svg";
+import closePreview from "../images/spots-images/closeIcon.svg";
 
 // CONSTANTS
 import {
@@ -74,7 +74,7 @@ document.querySelectorAll(".modal__close-btn").forEach((btn) => {
   btn.style.backgroundImage = `url(${closeIcon})`;
 });
 document.querySelectorAll("modal__close-btn_type_preview").forEach((btn) => {
-  btn.style.backgroundImage = `url(${closePreview})`;
+  btn.style.backgroundImage = `url(${close})`;
 });
 
 // MODALS
